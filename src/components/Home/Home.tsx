@@ -10,7 +10,7 @@ const Home = () => {
             Find out the elaborate features of all the past big spaceflights.
           </p>
         </div>
-        <div className="search-filter-wrapper">
+        <div className="search-filter-wrapper flex justify-between">
           <div className="search-container">
             <input
               type="text"
@@ -34,6 +34,24 @@ const Home = () => {
             </label>
             {/* <div className="border"></div> */}
           </div>
+          <div className="filter-container">
+      <div className="filter-by-status mr-6"> 
+        <select id="status-filter">
+        <option id="default-option" value="" disabled selected hidden>Filter by Status</option>
+          <option value="option01">Option 01</option>
+          <option value="option02">Option 02</option>
+          <option value="option03">Option 03</option>
+        </select>
+      </div>
+      <div className="filter-by-date">
+        <select id="date-filter">
+        <option id="default-option" value="" disabled selected hidden>Filter by Date</option>
+          <option value="lastWeek">Last Week</option>
+          <option value="lastMonth">Last Month</option>
+          <option value="lastYear">Last Year</option>
+        </select>
+      </div>
+    </div>
         </div>
       </section>
     </div>
