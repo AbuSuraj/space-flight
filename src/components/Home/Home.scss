@@ -1,3 +1,5 @@
+$blue-color: #0D6EFD;
+$light-blue-color: #4A9DEC;
 .header-container{
     width: 427px;
     height: 80px;
@@ -47,14 +49,14 @@ p{
       input:focus-visible{
         // border:1px solid #0D6EFD !important;
         outline: none;
-        border: 2px solid #4A9DEC;
+        border: 2px solid #{$light-blue-color};
         box-shadow: 0px 0px 0px 7px rgb(74, 157, 236, 20%);
       }
       
       .labelforsearch {
         width: 42px;
         height: 38px;
-        background-color: #0D6EFD;
+        background-color: #{$blue-color};
         cursor: text;
         padding: 10px 13px;
         border-radius: 0 4px 4px 0; 
