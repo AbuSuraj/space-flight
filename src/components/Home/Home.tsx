@@ -11,7 +11,7 @@ const Home = () => {
           </p>
         </div>
         <div className="search-filter-wrapper">
-          <div className="input-container">
+          <div className="search-container">
             <input
               type="text"
               name="text"
