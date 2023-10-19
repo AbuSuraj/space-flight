@@ -1,5 +1,6 @@
 import React from "react";
 import "./Home.scss";
+import FlightDetails from "./Flight-Details/FlightDetails";
 const Home = () => {
   return (
     <div>
@@ -78,6 +79,9 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </section>
+      <section className="mt-16 ">
+        <FlightDetails></FlightDetails>
       </section>
     </div>
   );
