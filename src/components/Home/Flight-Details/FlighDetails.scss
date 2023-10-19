@@ -7,4 +7,52 @@
     gap: 40px;
     background-color: #FFFFFF;
   }
+
+  /* Add the following styles to your CSS */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  width: 272px;
+}
+
+.arrow-button{
+  color:#0D6EFD;
+
+}
+.page-numbers {
+  list-style: none;
+  padding: 0;
+  display: flex; 
+}
+
+.page-number {
+  margin: 0;
+  padding: 5px 5px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #007BFF; /* Blue text color */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.current-page {
+  margin: 0;
+  padding: 5px 10px;
+  background-color: #007BFF; /* Blue background color for active page */
+  border: none;
+  cursor: pointer;
+  color: #fff; /* White text color for active page */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.page-numbers {
+  list-style: none;
+  padding: 0;
+  display: flex; /* Display as a horizontal list */
+  flex-direction: row; /* Arrange items from left to right */
+  justify-content: center; /* Center items horizontally */
+}
+
+  
   
