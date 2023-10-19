@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './FlighDetails.scss';
+import ReactPaginate from 'react-paginate'; // Import react-paginate
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'; // Import arrow icons
 
 interface Launch {
@@ -21,11 +22,12 @@ function formatDate(inputDate: string): string {
 }
 
 const FlightDetails = () => {
-  const [launches, setLaunches] = useState<Launch[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const launchesPerPage = 9;
+    const [launches, setLaunches] = useState<Launch[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [offset, setOffset] = useState(0);
+    const perPage = 9; // Items per page
 
   useEffect(() => {
     async function fetchLaunches() {
@@ -55,58 +57,75 @@ const FlightDetails = () => {
   }
 
   const totalLaunches = launches.length;
-  const indexOfLastLaunch = currentPage * launchesPerPage;
-  const indexOfFirstLaunch = indexOfLastLaunch - launchesPerPage;
+  const indexOfLastLaunch = currentPage * perPage;
+  const indexOfFirstLaunch = indexOfLastLaunch - perPage;
   const currentLaunches = launches.slice(indexOfFirstLaunch, indexOfLastLaunch);
 
-  const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(totalLaunches / launchesPerPage); i++) {
-    pageNumbers.push(i);
-  }
+  const handlePageClick = (data: { selected: number }) => {
+    const selected = data.selected;
+    const offset = Math.ceil(selected * perPage);
+
+    setCurrentPage(selected + 1);
+    setOffset(offset);
+  };
 
   return (
     <div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
-        {currentLaunches.map((launch) => (
-          <div key={launch?.flight_number} className="launch-card">
-            <img className='w-[124px] h-[124px]' src={launch?.links?.mission_patch} alt="Mission Patch" />
-            <p>Lunch Date: {formatDate(launch?.launch_date_local)}</p>
-            <p>{launch?.mission_name}</p>
-            <p>{launch?.rocket?.rocket_name}</p>
-            <p>Lunch Status: {launch?.launch_success ? <span>Success</span> : <span>Failed</span>}</p>
-          </div>
-        ))}
-      </div>
-      <div className="pagination">
-        <button
-          onClick={() => setCurrentPage(currentPage - 1)}
-          disabled={currentPage === 1}
-          className="arrow-button w-3 h-3"
-        >
-          <FaAngleLeft />
-          
-        </button>
-        <ul className="page-numbers">
-          {pageNumbers.map((number) => (
-            <li key={number}>
-              <button
-                onClick={() => setCurrentPage(number)}
-                className={number === currentPage ? 'current-page' : 'page-number'}
-              >
-                {number}
-              </button>
-            </li>
-          ))}
-        </ul>
-        <button
-          onClick={() => setCurrentPage(currentPage + 1)}
-          disabled={indexOfLastLaunch >= totalLaunches}
-          className="arrow-button"
-        >
-          <FaAngleRight />
-        </button>
-      </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+      {currentLaunches.map((launch) => (
+        <div key={launch?.flight_number} className="launch-card">
+          <img className='w-[124px] h-[124px]' src={launch?.links?.mission_patch} alt="Mission Patch" />
+          <p>Lunch Date: {formatDate(launch?.launch_date_local)}</p>
+          <p>{launch?.mission_name}</p>
+          <p>{launch?.rocket?.rocket_name}</p>
+          <p>Lunch Status: {launch?.launch_success ? <span>Success</span> : <span>Failed</span>}</p>
+        </div>
+      ))}
     </div>
+    <div className="pagination">
+      {/* <button
+        onClick={() => setCurrentPage(currentPage - 1)}
+        disabled={currentPage === 1}
+        className="arrow-button"
+      >
+        <FaAngleLeft />
+      </button> */}
+      {/* <ul className="page-numbers"> */}
+        <ReactPaginate
+          previousLabel={<button
+            onClick={() => setCurrentPage(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="arrow-button"
+          >
+            <FaAngleLeft />
+          </button>}
+          nextLabel={<button
+            onClick={() => setCurrentPage(currentPage + 1)}
+            disabled={indexOfLastLaunch >= totalLaunches}
+            className="arrow-button"
+          >
+            <FaAngleRight />
+          </button>}
+          breakLabel={'...'}
+          pageCount={Math.ceil(totalLaunches / perPage)}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={2}
+          onPageChange={handlePageClick}
+          containerClassName={'pagination'}
+          subContainerClassName={'pages pagination'}
+          activeClassName={'active'}
+         
+        />
+      {/* </ul> */}
+      {/* <button
+        onClick={() => setCurrentPage(currentPage + 1)}
+        disabled={indexOfLastLaunch >= totalLaunches}
+        className="arrow-button"
+      >
+        <FaAngleRight />
+      </button> */}
+    </div>
+  </div>
   );
 };
 
