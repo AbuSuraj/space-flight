@@ -11,7 +11,6 @@ const Home = () => {
           </p>
         </div>
 
-
         <div className="search-filter-wrapper flex flex-col md:flex-row md:justify-between mt-16">
           <div className="search-container flex justify-center md:justify-start items-center mt-6 mb-4">
             <input
@@ -44,35 +43,39 @@ const Home = () => {
             </label>
             {/* <div className="border"></div> */}
           </div>
-          <div className="filter-container flex flex-col md:flex-row md:justify-between md:items-center">
-        <div className="flex items-center justify-center md:justify-end mr-6  mb-4">
-          <input type="checkbox" className="w-4 h-4" defaultChecked={true} />
-          <label className="checkbox-text text-base font-normal ml-2">
-            Show Upcoming only
-          </label>
-        </div>
-        <div>
-            <div className="filter-by-status mr-6">
-              <select id="status-filter">
-                <option id="default-option" value="" disabled selected hidden>
-                  Filter by Status
-                </option>
-                <option value="option01">Option 01</option>
-                <option value="option02">Option 02</option>
-                <option value="option03">Option 03</option>
-              </select>
+          <div className="filter-container block">
+            <div className="flex items-center justify-center md:justify-end mr-24 md:mr-6  mb-4">
+              <input
+                type="checkbox"
+                className="w-4 h-4"
+                defaultChecked={true}
+              />
+              <label className="checkbox-text text-base font-normal ml-2">
+                Show Upcoming only
+              </label>
             </div>
-            <div className="filter-by-date">
-              <select id="date-filter">
-                <option id="default-option" value="" disabled selected hidden>
-                  Filter by Date
-                </option>
-                <option value="lastWeek">Last Week</option>
-                <option value="lastMonth">Last Month</option>
-                <option value="lastYear">Last Year</option>
-              </select>
+            <div className="flex flex-col md:flex-row md:justify-between md:items-center">
+              <div className="filter-by-status mr-6">
+                <select id="status-filter">
+                  <option id="default-option" value="" disabled selected hidden>
+                    Filter by Status
+                  </option>
+                  <option value="option01">Option 01</option>
+                  <option value="option02">Option 02</option>
+                  <option value="option03">Option 03</option>
+                </select>
+              </div>
+              <div className="filter-by-date">
+                <select id="date-filter">
+                  <option id="default-option" value="" disabled selected hidden>
+                    Filter by Date
+                  </option>
+                  <option value="lastWeek">Last Week</option>
+                  <option value="lastMonth">Last Month</option>
+                  <option value="lastYear">Last Year</option>
+                </select>
+              </div>
             </div>
-        </div>
           </div>
         </div>
       </section>
