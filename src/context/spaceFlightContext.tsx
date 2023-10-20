@@ -16,7 +16,7 @@ const SpaceFlightContext = createContext<SpaceFlightContextType | undefined>(und
 interface SpaceFlightProviderProps {
   children: ReactNode;
 }
-
+  
 export function SpaceFlightProvider({ children }: SpaceFlightProviderProps) {
   const [spaceSearch, setSpaceSearch] = useState('');
   const [upcoming, setUpcoming] = useState(false);

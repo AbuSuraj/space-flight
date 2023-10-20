@@ -3,6 +3,11 @@ import "./Home.scss";
 import FlightDetails from "./Flight-Details/FlightDetails";
 import Footer from "./Footer/Footer";
 import { useSpaceFlight } from "../../context/spaceFlightContext";
+
+function capitalizeFirstLetter(str:string) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 const Home = () => {
   const { setSpaceSearch, upcoming, setUpcoming, setFilterByDate, setFilterByStatus } = useSpaceFlight();
    
@@ -38,7 +43,7 @@ const Home = () => {
               className="input"
               id="input"
               placeholder="Search..."
-              onChange={(e) => setSpaceSearch(e.target.value)}
+              onChange={(e) => setSpaceSearch(capitalizeFirstLetter(e.target.value))}
             />
             <label  htmlFor="input" className="labelforsearch">
               <svg
@@ -81,8 +86,8 @@ const Home = () => {
                   <option id="default-option" value="" disabled selected hidden>
                     Filter by Status
                   </option>
-                  <option value="failure">Failure</option>
-                  <option value="success">Success</option>
+                  <option value="false">Failure</option>
+                  <option value="true">Success</option>
                 </select>
               </div>
               <div className="filter-by-date">

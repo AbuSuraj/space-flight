@@ -31,13 +31,11 @@ const FlightDetails = () => {
     const perPage = 9; // Items per page
     const {spaceSearch, upcoming, filterByDate, filterByStatus } = useSpaceFlight();
     console.log(spaceSearch, upcoming, filterByDate, filterByStatus);
-
-    // console.log(formattedLastMonth, formattedLastWeek, formattedLastYear)
-        
+          
   useEffect(() => {
     async function fetchLaunches() {
       try {
-        const response = await fetch('https://api.spacexdata.com/v3/launches');
+        const response = await fetch(`https://api.spacexdata.com/v3/launches?rocket_name=${spaceSearch}&upcoming=${upcoming}&launch_success=${filterByStatus}&launch_date_utc=${filterByDate}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -51,7 +49,7 @@ const FlightDetails = () => {
     }
 
     fetchLaunches();
-  }, []);
+  }, [spaceSearch, upcoming, filterByDate, filterByStatus]);
   console.log(launches)
 
   if (loading) {
