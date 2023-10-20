@@ -71,14 +71,23 @@ const FlightDetails = () => {
 
   return (
     <div>
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-6">
       {currentLaunches.map((launch) => (
-        <div key={launch?.flight_number} className="launch-card">
-          <img className='w-[124px] h-[124px]' src={launch?.links?.mission_patch} alt="Mission Patch" />
-          <p>Lunch Date: {formatDate(launch?.launch_date_local)}</p>
-          <p>{launch?.mission_name}</p>
-          <p>{launch?.rocket?.rocket_name}</p>
-          <p>Lunch Status: {launch?.launch_success ? <span>Success</span> : <span>Failed</span>}</p>
+        <div key={launch?.flight_number} className="launch-card w-52 md:w-[348px] lg:w-96">
+          <div className='mt-8'>
+          <img className='mx-auto w-[124px] h-[124px]' src={launch?.links?.mission_patch} alt="Mission Patch" />
+          </div>
+          <div className='mt-10 mb-8'>
+          <p className='text-base font-normal font-[Barlow] mb-2'><span className=' text-gray-600'>Launch Date: </span> <span className='text-gray-800'>{formatDate(launch?.launch_date_local)}</span></p>
+          <h4 className='font-[Barlow] text-2xl font-medium text-gray-900'>{launch?.mission_name}</h4>
+          <p className='text-base font-normal font-[Barlow] text-gray-700 mb-8'>{launch?.rocket?.rocket_name}</p>
+          <div className='mb-8'>
+          <p className='text-base font-medium font-[Barlow] text-gray-600 mb-2'>Launch Status: </p>
+          <p className='text-xs font-bold font-[Helvetica] text-white'>
+          {launch?.launch_success ? <span className='bg-[#198754] py-[4.2px] px-[7.8px] rounded'>Success</span> : <span className='bg-[#DC3545] py-[4.2px] px-[7.8px] rounded'>Failed</span>}
+          </p>
+          </div>
+          </div>
         </div>
       ))}
     </div>

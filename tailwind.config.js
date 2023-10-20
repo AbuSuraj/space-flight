@@ -6,11 +6,11 @@ export default {
   ],
   theme: {
     extend: {
-      screens: {
-        'sm': '314px',
-        'md': '720px',
-        'lg': '1320px',
-      },
+      // screens: {
+      //   'sm': '314px',
+      //   'md': '720px',
+      //   'lg': '1320px',
+      // },
     },
   },
   plugins: [],
