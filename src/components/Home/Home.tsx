@@ -1,6 +1,7 @@
 import React from "react";
 import "./Home.scss";
 import FlightDetails from "./Flight-Details/FlightDetails";
+import Footer from "./Footer/Footer";
 const Home = () => {
   return (
     <div>
@@ -83,6 +84,7 @@ const Home = () => {
       <section className="mt-16 ">
         <FlightDetails></FlightDetails>
       </section>
+      <section className="mt-[80.8px] mb-6"><Footer></Footer></section>
     </div>
   );
 };
