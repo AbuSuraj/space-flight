@@ -82,7 +82,7 @@ const FlightDetails = () => {
         </div>
       ))}
     </div>
-    <div className="pagination">
+    <div className="">
       {/* <button
         onClick={() => setCurrentPage(currentPage - 1)}
         disabled={currentPage === 1}
