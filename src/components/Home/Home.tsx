@@ -2,7 +2,24 @@ import React from "react";
 import "./Home.scss";
 import FlightDetails from "./Flight-Details/FlightDetails";
 import Footer from "./Footer/Footer";
+import { useSpaceFlight } from "../../context/spaceFlightContext";
 const Home = () => {
+  const { setSpaceSearch, upcoming, setUpcoming, setFilterByDate, setFilterByStatus } = useSpaceFlight();
+   
+  const today = new Date();
+  const lastWeek = new Date(today);
+  lastWeek.setDate(today.getDate() - 7);
+  const formattedLastWeek = lastWeek.toISOString();
+  
+   
+  const lastMonth = new Date(today);
+  lastMonth.setMonth(today.getMonth() - 1);
+  const formattedLastMonth = lastMonth.toISOString();
+   
+  const lastYear = new Date(today);
+  lastYear.setFullYear(today.getFullYear() - 1);
+  const formattedLastYear = lastYear.toISOString();
+
   return (
     <div>
       <section>
@@ -21,8 +38,9 @@ const Home = () => {
               className="input"
               id="input"
               placeholder="Search..."
+              onChange={(e) => setSpaceSearch(e.target.value)}
             />
-            <label htmlFor="input" className="labelforsearch">
+            <label  htmlFor="input" className="labelforsearch">
               <svg
                 width="16"
                 height="16"
@@ -50,7 +68,8 @@ const Home = () => {
               <input
                 type="checkbox"
                 className="w-4 h-4"
-                defaultChecked={true}
+                defaultChecked={upcoming}
+                onChange={() => setUpcoming(!upcoming)}
               />
               <label className="checkbox-text text-base font-normal ml-2">
                 Show Upcoming only
@@ -58,23 +77,22 @@ const Home = () => {
             </div>
             <div className="flex flex-col md:flex-row md:justify-between md:items-center">
               <div className="filter-by-status mr-6">
-                <select id="status-filter">
+                <select id="status-filter" onChange={(e) => setFilterByStatus(e.target.value)}>
                   <option id="default-option" value="" disabled selected hidden>
                     Filter by Status
                   </option>
-                  <option value="option01">Option 01</option>
-                  <option value="option02">Option 02</option>
-                  <option value="option03">Option 03</option>
+                  <option value="failure">Failure</option>
+                  <option value="success">Success</option>
                 </select>
               </div>
               <div className="filter-by-date">
-                <select id="date-filter">
+                <select id="date-filter" onChange={(e) => setFilterByDate(e.target.value)}>
                   <option id="default-option" value="" disabled selected hidden>
                     Filter by Date
                   </option>
-                  <option value="lastWeek">Last Week</option>
-                  <option value="lastMonth">Last Month</option>
-                  <option value="lastYear">Last Year</option>
+                  <option value={formattedLastWeek}>Last Week</option>
+                  <option value={formattedLastMonth}>Last Month</option>
+                  <option value={formattedLastYear}>Last Year</option>
                 </select>
               </div>
             </div>

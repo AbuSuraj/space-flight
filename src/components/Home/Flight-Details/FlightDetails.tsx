@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './FlighDetails.scss';
 import ReactPaginate from 'react-paginate'; // Import react-paginate
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'; // Import arrow icons
+import { useSpaceFlight } from '../../../context/spaceFlightContext';
 
 interface Launch {
   flight_number: number;
@@ -28,7 +29,11 @@ const FlightDetails = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [offset, setOffset] = useState(0);
     const perPage = 9; // Items per page
+    const {spaceSearch, upcoming, filterByDate, filterByStatus } = useSpaceFlight();
+    console.log(spaceSearch, upcoming, filterByDate, filterByStatus);
 
+    // console.log(formattedLastMonth, formattedLastWeek, formattedLastYear)
+        
   useEffect(() => {
     async function fetchLaunches() {
       try {
@@ -47,6 +52,7 @@ const FlightDetails = () => {
 
     fetchLaunches();
   }, []);
+  console.log(launches)
 
   if (loading) {
     return <div>Loading...</div>;
