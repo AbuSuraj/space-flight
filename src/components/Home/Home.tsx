@@ -28,9 +28,9 @@ const Home = () => {
   return (
     <div>
       <section>
-        <div className="header-container mx-auto">
-          <h1>Spaceflight details</h1>
-          <p>
+        <div className="header-container w-[312px] md:w-[534px] lg:w-[427px] h-[99px] md:h-[89px] lg:h-20  mx-auto">
+          <h1 className="text-[28px] md:text-[40px] font-medium font-[Barlow] text-gray-900 ">Spaceflight details</h1>
+          <p className="text-base font-normal font-[Barlow] text-gray-700">
             Find out the elaborate features of all the past big spaceflights.
           </p>
         </div>
@@ -40,7 +40,7 @@ const Home = () => {
             <input
               type="text"
               name="text"
-              className="input"
+              className="input ml-3 w-[279px] md:w-[271px] lg:w-[382px] h-[38px]"
               id="input"
               placeholder="Search..."
               onChange={(e) => setSpaceSearch(capitalizeFirstLetter(e.target.value))}
@@ -75,7 +75,7 @@ const Home = () => {
                 defaultChecked={upcoming}
                 onChange={() => setUpcoming(!upcoming)}
               />
-              <label className="checkbox-text text-base font-normal ml-2">
+              <label className="font-[Barlow] text-[#212529] text-base font-normal ml-2">
                 Show Upcoming only
               </label>
             </div>

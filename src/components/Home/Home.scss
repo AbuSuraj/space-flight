@@ -2,64 +2,19 @@ $blue-color: #0D6EFD;
 $light-blue-color: #4A9DEC;
 $grey-600-color: #6C757D;
 
-// @media screen and (min-width: 992px) {
-    .header-container {
-      width: 427px;
-      height: 80px;
-    
-  
+ .header-container {
+ 
     h1 {
-      font-size: 40px;
       line-height: 48px;
-      font-family: Barlow;
-      color: #212529;
-      font-weight: 500;
     }
-    p{
-        font-size: 16px;
-        line-height: 24px;
-        font-weight: 400;
-        font-family: Barlow;
-        color: #495057;
-    }
+    
 }
-//   }
-  
  
-// .header-container{
-//     width: 427px;
-//     height: 80px;
-//    h1{
-//  font-size: 40px;
-//  line-height: 48px;
-//  font-family: Barlow;
-//  color: #212529;
-//  font-weight: 500;
-// }   
-
-// p{
-//     font-size: 16px;
-//     line-height: 24px;
-//     font-weight: 400;
-//     font-family: Barlow;
-//     color: #495057;
-// }
-
-// }
-
- 
-  .checkbox-text {
-     font-family: Barlow;
-     color: #212529
-  }
-  
-
 .search-filter-wrapper{
-    // margin-top: 105px;
 
       .input {
-        width: 382px;
-        height: 38px;
+        // width: 382px;
+        // height: 38px;
         border-radius: 4px 0px 0px 4px;
         border: 1px solid #CED4DA;
         cursor: pointer;
@@ -90,14 +45,11 @@ $grey-600-color: #6C757D;
       }
 
       .filter-container {
-        // display: flex;
-        // justify-content: space-between;
-        // align-items: center;
-      
+       
         .filter-by-status,
         .filter-by-date {
           select {
-            // width: 256px;
+        
             height: 38px;
             padding: 7px 13px;
             border: 1px solid #CED4DA;
@@ -112,6 +64,7 @@ $grey-600-color: #6C757D;
         }
     }
 } 
+
 #disable-option{
     color: #6C757D !important;
     font-size: 16px;
@@ -119,52 +72,14 @@ $grey-600-color: #6C757D;
     font-weight: 400;
     font-family: Helvetica ;
 }
-   
- /* Medium screens (md) */
- @media screen and (min-width: 768px) and (max-width: 991px) {
-    .header-container {
-      width: 513px;
-      height: 89px;
-    }
 
-    .search-filter-wrapper{
-        .input {
-            width: 213px; 
-    }
-  }
-
-  .filter-container {
-    .filter-by-status,
-    .filter-by-date {
-      select {
-        // width: 185px;
-    }
-}
-}
-} 
-  /* Small screens (sm) */
   @media screen and (max-width: 767px) {
     .header-container {
-      width: 312px;
-      height: 99px;
      
       h1 {
-        font-size: 28px;
+         
         line-height: 33px;
       }
     }
 
-    .search-filter-wrapper{
-        .input {
-            width: 271px; 
-    }
-}
-.filter-container {
-    .filter-by-status,
-    .filter-by-date {
-      select {
-        // width: 313px;
-    }
-}
-}
 }
