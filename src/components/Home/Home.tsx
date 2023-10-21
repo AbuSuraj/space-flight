@@ -66,7 +66,6 @@ const Home = () => {
                 </defs>
               </svg>
             </label>
-            {/* <div className="border"></div> */}
           </div>
           <div className="filter-container block">
             <div className="flex items-center justify-center md:justify-end mr-24 md:mr-6  mb-4">
@@ -80,9 +79,9 @@ const Home = () => {
                 Show Upcoming only
               </label>
             </div>
-            <div className="flex flex-col md:flex-row md:justify-between md:items-center">
-              <div className="filter-by-status mr-6">
-                <select id="status-filter" onChange={(e) => setFilterByStatus(e.target.value)}>
+            <div className="flex flex-col md:flex-row md:justify-between md:items-baseline">
+              <div className="filter-by-status ml-3">
+                <select  className="w-80 md:w-[185px] lg:w-64 sm:mb-4" id="status-filter" onChange={(e) => setFilterByStatus(e.target.value)}>
                   <option id="default-option" value="" disabled selected hidden>
                     Filter by Status
                   </option>
@@ -90,8 +89,8 @@ const Home = () => {
                   <option value="true">Success</option>
                 </select>
               </div>
-              <div className="filter-by-date">
-                <select id="date-filter" onChange={(e) => setFilterByDate(e.target.value)}>
+              <div className="filter-by-date ml-3">
+                <select className="w-80 md:w-[185px] lg:w-64" id="date-filter" onChange={(e) => setFilterByDate(e.target.value)}>
                   <option id="default-option" value="" disabled selected hidden>
                     Filter by Date
                   </option>

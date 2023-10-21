@@ -75,7 +75,7 @@ const FlightDetails = () => {
 
   return (
     <div>
-    <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid items-center justify-items-center grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-6">
       {currentLaunches.map((launch) => (
         <div key={launch?.flight_number} className="launch-card w-52 md:w-[348px] lg:w-96">
           <div className='mt-8'>
