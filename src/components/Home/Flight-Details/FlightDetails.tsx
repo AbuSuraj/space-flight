@@ -3,6 +3,7 @@ import './FlighDetails.scss';
 import ReactPaginate from 'react-paginate';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import { useSpaceFlight } from '../../../context/spaceFlightContext';
+import Loaders from '../../../Loaders/Loaders';
 
 interface Launch {
   flight_number: number;
@@ -74,7 +75,7 @@ const FlightDetails = () => {
   }, [currentPage]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loaders></Loaders>;
   }
 
   if (error) {
