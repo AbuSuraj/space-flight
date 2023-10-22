@@ -4,20 +4,8 @@ import ReactPaginate from 'react-paginate';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import { useSpaceFlight } from '../../../context/spaceFlightContext';
 import Loaders from '../../../Loaders/Loaders';
+import { Flight } from '../../../Interfaces/flight-details.interface';
 
-interface Flight {
-  flight_number: number;
-  mission_name: string;
-  launch_date_local: string;
-  links: {
-    mission_patch: string;
-  };
-  launch_success: boolean;
-  rocket: {
-    rocket_name: string;
-  };
-  upcoming: boolean;
-}
 
 function formatDate(inputDate: string): string {
   const date = new Date(inputDate);
