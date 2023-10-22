@@ -1,4 +1,3 @@
-import React from "react";
 import "./Home.scss";
 import FlightDetails from "./Flight-Details/FlightDetails";
 import Footer from "./Footer/Footer";
@@ -73,7 +72,7 @@ const Home = () => {
                 type="checkbox"
                 className="w-4 h-4"
                 defaultChecked={upcoming}
-                onChange={() => setUpcoming(!upcoming)}
+                onClick={() => setUpcoming(!upcoming)}
               />
               <label className="font-[Barlow] text-[#212529] text-base font-normal ml-2">
                 Show Upcoming only
