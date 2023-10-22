@@ -18,17 +18,17 @@ const FlightDetails: React.FC  = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const perPage = 9; // Items per page
+  const perPage = 9; 
   const { spaceSearch, upcoming, filterByDate, filterByStatus } = useSpaceFlight();
   console.log(spaceSearch, upcoming, filterByDate, filterByStatus);
 
-  // Retrieve the current page from localStorage or set it to 1
+
   const [currentPage, setCurrentPage] = useState<number>(() => {
     const savedPage = localStorage.getItem('currentPage');
     return savedPage ? parseInt(savedPage, 10) : 1;
   });
 
-  // Manually set the initial page number displayed by ReactPaginate
+ 
   const [initialPage] = useState<number>(() => {
     const savedPage = localStorage.getItem('currentPage');
     return savedPage ? parseInt(savedPage, 10) : 1;
@@ -59,7 +59,7 @@ const FlightDetails: React.FC  = () => {
   }, [spaceSearch, upcoming, filterByDate, filterByStatus]);
 
   useEffect(() => {
-    // Save the current page to localStorage whenever it changes
+ 
     localStorage.setItem('currentPage', currentPage.toString());
   }, [currentPage]);
 
@@ -109,7 +109,7 @@ const FlightDetails: React.FC  = () => {
       </div>
       <div className="">
         <ReactPaginate
-          forcePage={initialPage - 1} // Set the initial page based on initialPage state
+          forcePage={initialPage - 1} 
           previousLabel={<button
             onClick={() => setCurrentPage(currentPage - 1)}
             disabled={currentPage === 1}
