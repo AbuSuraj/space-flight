@@ -41,6 +41,9 @@ Before getting started, ensure that you have the following tools and dependencie
 3. Install the project dependencies using npm.
    ```
     npm install.
+4. Run the following command
+   ```
+   npm run dev
 ## Used Resources 
 <li>React: ^18.2.0</li>
 <li>React DOM: ^18.2.0</li>
