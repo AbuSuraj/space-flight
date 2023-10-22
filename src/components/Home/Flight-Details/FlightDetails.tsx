@@ -66,6 +66,10 @@ const FlightDetails = () => {
     return <Loaders></Loaders>;
   }
 
+  if (flights.length === 0) {
+    return <div>No flights found</div>;
+  }
+
   if (error) {
     return <div>Error: {error}</div>;
   }
@@ -83,7 +87,7 @@ const FlightDetails = () => {
   return (
     <div>
       <div className="grid items-center justify-items-center grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {currentFlights.map((flight) => (
+        {currentFlights?.map((flight) => (
           <div key={flight?.flight_number} className="launch-card w-52 md:w-[348px] lg:w-96">
             <div className='mt-8'>
               <img className='mx-auto w-[124px] h-[124px]' src={flight?.links?.mission_patch} alt="Mission Patch" />
