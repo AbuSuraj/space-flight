@@ -1,4 +1,5 @@
 import "./Home.scss";
+import React from 'react';
 import FlightDetails from "./Flight-Details/FlightDetails";
 import Footer from "../Footer/Footer";
 import { useSpaceFlight } from "../../context/spaceFlightContext";
@@ -7,7 +8,7 @@ function capitalizeFirstLetter(str:string) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-const Home = () => {
+const Home: React.FC = () => {
   const { setSpaceSearch, upcoming, setUpcoming, setFilterByDate, setFilterByStatus } = useSpaceFlight();
    
   const today = new Date();

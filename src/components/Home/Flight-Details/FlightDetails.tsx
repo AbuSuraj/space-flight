@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
 import './FlighDetails.scss';
 import ReactPaginate from 'react-paginate';
@@ -12,7 +13,7 @@ function formatDate(inputDate: string): string {
   return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 }
 
-const FlightDetails = () => {
+const FlightDetails: React.FC  = () => {
   const [flights, setFlights] = useState<Flight[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
