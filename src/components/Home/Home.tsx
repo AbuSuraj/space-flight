@@ -1,14 +1,35 @@
-import React from "react";
 import "./Home.scss";
 import FlightDetails from "./Flight-Details/FlightDetails";
 import Footer from "./Footer/Footer";
+import { useSpaceFlight } from "../../context/spaceFlightContext";
+
+function capitalizeFirstLetter(str:string) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 const Home = () => {
+  const { setSpaceSearch, upcoming, setUpcoming, setFilterByDate, setFilterByStatus } = useSpaceFlight();
+   
+  const today = new Date();
+  const lastWeek = new Date(today);
+  lastWeek.setDate(today.getDate() - 7);
+  const formattedLastWeek = lastWeek.toISOString();
+  
+   
+  const lastMonth = new Date(today);
+  lastMonth.setMonth(today.getMonth() - 1);
+  const formattedLastMonth = lastMonth.toISOString();
+   
+  const lastYear = new Date(today);
+  lastYear.setFullYear(today.getFullYear() - 1);
+  const formattedLastYear = lastYear.toISOString();
+
   return (
     <div>
       <section>
-        <div className="header-container mx-auto">
-          <h1>Spaceflight details</h1>
-          <p>
+        <div className="header-container w-[312px] md:w-[534px] lg:w-[427px] h-[99px] md:h-[89px] lg:h-20  mx-auto">
+          <h1 className="text-[28px] md:text-[40px] font-medium font-[Barlow] text-gray-900 ">Spaceflight details</h1>
+          <p className="text-base font-normal font-[Barlow] text-gray-700">
             Find out the elaborate features of all the past big spaceflights.
           </p>
         </div>
@@ -18,11 +39,12 @@ const Home = () => {
             <input
               type="text"
               name="text"
-              className="input"
+              className="input ml-3 w-[279px] md:w-[271px] lg:w-[382px] h-[38px]"
               id="input"
               placeholder="Search..."
+              onChange={(e) => setSpaceSearch(capitalizeFirstLetter(e.target.value))}
             />
-            <label htmlFor="input" className="labelforsearch">
+            <label  htmlFor="input" className="labelforsearch">
               <svg
                 width="16"
                 height="16"
@@ -43,38 +65,37 @@ const Home = () => {
                 </defs>
               </svg>
             </label>
-            {/* <div className="border"></div> */}
           </div>
           <div className="filter-container block">
             <div className="flex items-center justify-center md:justify-end mr-24 md:mr-6  mb-4">
               <input
                 type="checkbox"
                 className="w-4 h-4"
-                defaultChecked={true}
+                defaultChecked={upcoming}
+                onClick={() => setUpcoming(!upcoming)}
               />
-              <label className="checkbox-text text-base font-normal ml-2">
+              <label className="font-[Barlow] text-[#212529] text-base font-normal ml-2">
                 Show Upcoming only
               </label>
             </div>
-            <div className="flex flex-col md:flex-row md:justify-between md:items-center">
-              <div className="filter-by-status mr-6">
-                <select id="status-filter">
+            <div className="flex flex-col md:flex-row md:justify-between md:items-baseline">
+              <div className="filter-by-status ml-3">
+                <select  className="w-80 md:w-[185px] lg:w-64 sm:mb-4" id="status-filter" onChange={(e) => setFilterByStatus(e.target.value)}>
                   <option id="default-option" value="" disabled selected hidden>
                     Filter by Status
                   </option>
-                  <option value="option01">Option 01</option>
-                  <option value="option02">Option 02</option>
-                  <option value="option03">Option 03</option>
+                  <option value="false">Failure</option>
+                  <option value="true">Success</option>
                 </select>
               </div>
-              <div className="filter-by-date">
-                <select id="date-filter">
+              <div className="filter-by-date ml-3">
+                <select className="w-80 md:w-[185px] lg:w-64" id="date-filter" onChange={(e) => setFilterByDate(e.target.value)}>
                   <option id="default-option" value="" disabled selected hidden>
                     Filter by Date
                   </option>
-                  <option value="lastWeek">Last Week</option>
-                  <option value="lastMonth">Last Month</option>
-                  <option value="lastYear">Last Year</option>
+                  <option value={formattedLastWeek}>Last Week</option>
+                  <option value={formattedLastMonth}>Last Month</option>
+                  <option value={formattedLastYear}>Last Year</option>
                 </select>
               </div>
             </div>
