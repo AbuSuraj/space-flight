@@ -5,7 +5,7 @@ import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import { useSpaceFlight } from '../../../context/spaceFlightContext';
 import Loaders from '../../../Loaders/Loaders';
 
-interface Launch {
+interface Flight {
   flight_number: number;
   mission_name: string;
   launch_date_local: string;
@@ -25,7 +25,7 @@ function formatDate(inputDate: string): string {
 }
 
 const FlightDetails = () => {
-  const [launches, setLaunches] = useState<Launch[]>([]);
+  const [flights, setFlights] = useState<Flight[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -52,13 +52,13 @@ const FlightDetails = () => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        const data: Launch[] = await response.json();
+        const data: Flight[] = await response.json();
 
-        const filteredLaunches = upcoming
-          ? data.filter((launch) => launch.upcoming === true)
-          : data.filter((launch) => launch.upcoming === false);
+        const filteredFlights = upcoming
+          ? data.filter((flight) => flight.upcoming === true)
+          : data.filter((flight) => flight.upcoming === false);
 
-        setLaunches(filteredLaunches);
+        setFlights(filteredFlights);
         setLoading(false);
       } catch (error) {
         setError('Error fetching data');
@@ -82,10 +82,10 @@ const FlightDetails = () => {
     return <div>Error: {error}</div>;
   }
 
-  const totalLaunches = launches.length;
-  const indexOfLastLaunch = currentPage * perPage;
-  const indexOfFirstLaunch = indexOfLastLaunch - perPage;
-  const currentLaunches = launches.slice(indexOfFirstLaunch, indexOfLastLaunch);
+  const totalFlights = flights.length;
+  const indexOfLastFlight = currentPage * perPage;
+  const indexOfFirstFlight = indexOfLastFlight - perPage;
+  const currentFlights = flights.slice(indexOfFirstFlight, indexOfLastFlight);
 
   const handlePageClick = (data: { selected: number }) => {
     const selected = data.selected;
@@ -95,19 +95,19 @@ const FlightDetails = () => {
   return (
     <div>
       <div className="grid items-center justify-items-center grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {currentLaunches.map((launch) => (
-          <div key={launch?.flight_number} className="launch-card w-52 md:w-[348px] lg:w-96">
+        {currentFlights.map((flight) => (
+          <div key={flight?.flight_number} className="launch-card w-52 md:w-[348px] lg:w-96">
             <div className='mt-8'>
-              <img className='mx-auto w-[124px] h-[124px]' src={launch?.links?.mission_patch} alt="Mission Patch" />
+              <img className='mx-auto w-[124px] h-[124px]' src={flight?.links?.mission_patch} alt="Mission Patch" />
             </div>
             <div className='mt-10 mb-8'>
-              <p className='text-base font-normal font-[Barlow] mb-2'><span className=' text-gray-600'>Launch Date: </span> <span className='text-gray-800'>{formatDate(launch?.launch_date_local)}</span></p>
-              <h4 className='font-[Barlow] text-2xl font-medium text-gray-900'>{launch?.mission_name}</h4>
-              <p className='text-base font-normal font-[Barlow] text-gray-700 mb-8'>{launch?.rocket?.rocket_name}</p>
+              <p className='text-base font-normal font-[Barlow] mb-2'><span className=' text-gray-600'>Launch Date: </span> <span className='text-gray-800'>{formatDate(flight?.launch_date_local)}</span></p>
+              <h4 className='font-[Barlow] text-2xl font-medium text-gray-900'>{flight?.mission_name}</h4>
+              <p className='text-base font-normal font-[Barlow] text-gray-700 mb-8'>{flight?.rocket?.rocket_name}</p>
               <div className='mb-8'>
                 <p className='text-base font-medium font-[Barlow] text-gray-600 mb-2'>Launch Status: </p>
                 <p className='text-xs font-bold font-[Helvetica] text-white'>
-                  {launch?.launch_success ? <span className='bg-[#198754] py-[4.2px] px-[7.8px] rounded'>Success</span> : <span className='bg-[#DC3545] py-[4.2px] px-[7.8px] rounded'>Failed</span>}
+                  {flight?.launch_success ? <span className='bg-[#198754] py-[4.2px] px-[7.8px] rounded'>Success</span> : <span className='bg-[#DC3545] py-[4.2px] px-[7.8px] rounded'>Failed</span>}
                 </p>
               </div>
             </div>
@@ -126,13 +126,13 @@ const FlightDetails = () => {
           </button>}
           nextLabel={<button
             onClick={() => setCurrentPage(currentPage + 1)}
-            disabled={indexOfLastLaunch >= totalLaunches}
+            disabled={indexOfLastFlight >= totalFlights}
             className="arrow-button"
           >
             <FaAngleRight />
           </button>}
           breakLabel={'...'}
-          pageCount={Math.ceil(totalLaunches / perPage)}
+          pageCount={Math.ceil(totalFlights / perPage)}
           marginPagesDisplayed={2}
           pageRangeDisplayed={2}
           onPageChange={handlePageClick}
