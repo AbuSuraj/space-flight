@@ -1,21 +1,7 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
-
-interface SpaceFlightContextType {
-  spaceSearch: string;
-  setSpaceSearch: React.Dispatch<React.SetStateAction<string>>;
-  upcoming: boolean;
-  setUpcoming: React.Dispatch<React.SetStateAction<boolean>>;
-  filterByDate: string;
-  setFilterByDate: React.Dispatch<React.SetStateAction<string>>;
-  filterByStatus: string;
-  setFilterByStatus: React.Dispatch<React.SetStateAction<string>>;
-}
+import { createContext, useContext, useState } from 'react';
+import { SpaceFlightContextType, SpaceFlightProviderProps } from '../Interfaces/space-flight-context.interface';
 
 const SpaceFlightContext = createContext<SpaceFlightContextType | undefined>(undefined);
-
-interface SpaceFlightProviderProps {
-  children: ReactNode;
-}
   
 export function SpaceFlightProvider({ children }: SpaceFlightProviderProps) {
   const [spaceSearch, setSpaceSearch] = useState('');

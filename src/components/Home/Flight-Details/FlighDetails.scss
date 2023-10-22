@@ -25,33 +25,33 @@
   // border: 1px solid #DEE2E6;
 }
 
-/* Pagination item */
+ 
 .pagination li {
   color: #007bff  !important;
-  // margin: 0 5px;
+  
   padding: 5px 10px;
   cursor: pointer;
   border: 1px solid #DEE2E6;
-  // border-radius: 4px;
+  
 font-size: 14px;
 line-height: 21px;
 font-family: Helvetica;
 }
 
-/* Active page item */
+ 
 .pagination li.active {
   background-color: #007bff;
   color: #fff !important;
   padding: 5px 10px;
   cursor: pointer;
   border: 1px solid #DEE2E6;
-  // border-radius: 4px;
+  
  font-size: 14px;
  line-height: 21px;
  font-family: Helvetica;
 }
 
-/* Disabled page item */
+ 
 .pagination li.disabled {
   pointer-events: none;
   color: #007bff;
@@ -59,22 +59,20 @@ font-family: Helvetica;
   cursor: not-allowed;
 }
 
-/* Next and previous buttons */
+ 
 .pagination li.previous,
 .pagination li.next {
  
   color: #007bff;
   
 }
-/* Disabled next and previous buttons */
+ 
 .pagination li.previous.disabled,
 .pagination li.next.disabled {
-// background-color: #ccc;
-// border: 1px solid #ccc;
+ 
 cursor: not-allowed;
 }
 
-/* Break items */
 .pagination li.break-me {
   cursor: default;
   color:#007bff;

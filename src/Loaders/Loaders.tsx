@@ -1,14 +1,4 @@
- 
 
-// const Loaders = () => {
-//     return (
-//         <div>
-            
-//         </div>
-//     );
-// };
-
-// export default Loaders;
 import React from 'react';
 import './Loaders.scss'
 interface HexBrickProps {
