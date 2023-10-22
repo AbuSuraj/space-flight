@@ -1,6 +1,6 @@
 import "./Home.scss";
 import FlightDetails from "./Flight-Details/FlightDetails";
-import Footer from "./Footer/Footer";
+import Footer from "../Footer/Footer";
 import { useSpaceFlight } from "../../context/spaceFlightContext";
 
 function capitalizeFirstLetter(str:string) {
